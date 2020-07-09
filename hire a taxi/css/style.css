@@ -13,6 +13,15 @@ ul {
   padding: 0;
 }
 
+.alert {
+  display: none;
+  color: #000000;
+  background: #edb77d;
+  text-align: center;
+  padding: 15px;
+  font-weight: 600;
+}
+
 /* poppins-300 - latin */
 @font-face {
   font-family: 'Poppins';

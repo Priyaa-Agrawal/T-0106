@@ -36,8 +36,8 @@
   <!-- STYLE CSS -->
   <link rel="stylesheet" href="attach your taxi/css/style.css">
   <!-- MATERIAL DESIGN ICONIC FONT -->
-  <link rel="stylesheet" href="attach your taxi/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
-		
+  <link rel="stylesheet" href="attach your taxi/fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+	<link rel="stylesheet" href="attach your taxi/fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">	
 
 </head>
 
@@ -110,37 +110,39 @@
 
     <div class="wrapper" style="background-image: url('attach your taxi/images/13.png');">
 			<div class="inner" style="font-weight: bold;">
-				<form action="">
+				<form action="" id='attachcarForm'>
 					<h3>Enter Details :</h3>
 					<div class="form-group">
 						<div class="form-wrapper">
 							<label for="">First Name</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" name="firstname" id="firstname" required>
 						</div>
 						<div class="form-wrapper">
 							<label for="">Last Name</label>
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" name="lastname" id="lastname" required>
 						</div>
 					</div>
 					<div class="form-wrapper">
 						<label for="">Email</label>
-						<input type="text" class="form-control">
+						<input type="email" class="form-control" name="email" id="email" required>
 					</div>
 					<div class="form-wrapper">
 						<label for="">Contact</label>
-						<input type="number" class="form-control">
+						<input type="number" class="form-control" name="phone" id="phone" required>
 					</div>
 					<div class="form-wrapper">
 						<label for="">Vehicle Type</label>
-						<input type="text" class="form-control">
+						<input type="text" class="form-control" name="vehicle" id="vehicle" required>
 					</div>
 					<div class="checkbox">
 						<label>
-							<input type="checkbox"> I accept the Terms of Use & Privacy Policy.
+							<input type="checkbox" required> I accept the Terms of Use & Privacy Policy.
 							<span class="checkmark"></span>
 						</label>
-					</div>
-					<button>Register Now</button>
+          </div>
+          <div class="alert">Your respond has been sent. Thank You!</div>
+
+					<button type="submit">Register Now</button>
 				</form>
 			</div>
 		</div>
@@ -313,6 +315,14 @@
     <!-- End Footer -->
 
   <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  
+  <!-- Firebase JS Files -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+  <script src="assets/js/attachcar.js"></script>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/jquery/jquery.min.js"></script>

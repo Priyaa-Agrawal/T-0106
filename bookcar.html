@@ -16,7 +16,7 @@
     <!-- Main css -->
     <link rel="stylesheet" href="hire a taxi/css/style.css" />
   </head>
-  <body>
+  <body onload="display()">
     <div class="main">
       <div class="container">
         <div class="booking-content">
@@ -40,6 +40,7 @@
             </center>
             <form id="booking-form">
               <h2>Book Your Car!</h2>
+              <h2 id="vehicle"></h2>
               <div class="form-group form-input">
                 <input type="text" name="name" id="name" value="" required />
                 <label for="name" class="form-label">Your name</label>
@@ -58,6 +59,7 @@
                 <input type="text" name="city" id="city" value="" required />
                 <label for="city" class="form-label">City</label>
               </div>
+
               <div class="form-group form-input">
                 <input
                   type="text"
@@ -66,7 +68,7 @@
                   value=""
                   required
                 />
-                <label for="destination" class="form-label">Destination</label>
+                <label for="city" class="form-label">Destination</label>
               </div>
               <div class="form-group form-input">
                 Date
@@ -83,28 +85,37 @@
                     class="form-control"
                     type="time"
                     value="00:00"
+                    name="time"
                     id="example-time-input"
                   />
                 </div>
-                <!-- </div> -->
-                <!-- <div class="select-list">
-                  <select name="time" id="time" required>
-                    <option value="">Date</option>
-                    <option value="6pm">6:00 PM</option>
-                    <option value="7pm">7:00 PM</option>
-                  </select>
-                </div> -->
               </div>
-              <div class="form-group">
+
+              <!-- <select id="mySelect">
+                <option value="apple">Apple</option>
+                <option value="orange">Orange</option>
+                <option value="pineapple">Pineapple</option>
+                <option value="banana">Banana</option>
+              </select> -->
+
+              <!-- <div class="form-group">
                 <div class="select-list">
-                  <select name="food" id="food" required>
-                    <option value="">Vehicle Type</option>
-                    <option value="seasonalfish">Car</option>
-                    <option value="assortedmushrooms">Jeep</option>
-                    <option value="seasonalfish">Bus</option>
-                  </select>
+                  <div id="food">
+                    <select name="food" id="vehicle" required>
+                      <option value="">Vehicle Type</option>
+                      <option value="Hatchback">Hatchback</option>
+                      <option value="Sedan">Sedan</option>
+                      <option value="Suv">Suv</option>
+                      <option value="Luxury Cars">Luxury Cars</option>
+                      <option name="vehicle" value="Tempo-Traveller"
+                        >Tempo-Traveller</option
+                      >
+                      <option name="vehicle" value="Bus">Bus</option>
+                    </select>
+                  </div>
                 </div>
-              </div>
+              </div> -->
+              <!-- <br /><br /> -->
               <div class="form-radio">
                 <label class="label-radio"> Select Number of person</label>
                 <div class="radio-item-list">
@@ -157,6 +168,8 @@
                 </div>
               </div>
 
+              <div class="alert">Your respond has been sent. Thank You!</div>
+              <br />
               <div class="form-submit">
                 <input
                   type="submit"
@@ -175,6 +188,19 @@
       </div>
     </div>
 
+    <script>
+      function display() {
+        document.getElementById(
+          'vehicle'
+        ).innerHTML = window.location.search.split('=')[1]
+      }
+    </script>
+    <!-- Firebase JS Files -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+    <script src="assets/js/bookcar.js"></script>
     <!-- JS -->
     <script src="hire a taxi/vendor/jquery/jquery.min.js"></script>
     <script src="hire a taxi/js/main.js"></script>
