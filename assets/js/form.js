@@ -51,15 +51,32 @@ function getInputVal(id) {
 }
 
 // Save message to Firebase
-
 function saveMessage(date, name, phone, email, message) {
   var newMessageRef = messagesRef.push()
-  console.log(name, phone, email, message, date)
   newMessageRef.set({
     date: date.toDateString(),
     name: name,
     phone: phone,
     email: email,
     message: message,
+  })
+  showMessage()
+}
+
+// Get message from Firebase
+function showMessage() {
+  messagesRef.on('value', function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var data = childSnapshot.val()
+
+      document.getElementById('contact-table').innerHTML += `
+      <tr>
+      <th scope="row">${data.date}</th>
+      <td>${data.name}</td>
+      <td>${data.phone}</td>
+      <td>${data.email}</td>
+      <td>${data.message}</td>
+      </tr>`
+    })
   })
 }

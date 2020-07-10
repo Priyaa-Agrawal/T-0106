@@ -12,7 +12,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 const firestore = firebase.firestore()
 
-// Reference messages collection
+// Reference booking collection
 var taxiRef = firebase.database().ref('carbooking')
 
 // Listen for form submit
@@ -37,7 +37,7 @@ function submitForm(e) {
     if (number_people[i].checked) var person = number_people[i].value
   }
 
-  //Save Message
+  //Booking
   carBooking(
     name,
     phone,
@@ -67,8 +67,7 @@ function getInputVal(id) {
   return document.getElementById(id).value
 }
 
-// Save message to Firebase
-
+// Save Booking to Firebase
 function carBooking(
   name,
   phone,
@@ -91,5 +90,27 @@ function carBooking(
     vehicle: vehicle,
     person: person,
     bookingdate: bookingdate.toDateString(),
+  })
+  showBooking()
+}
+
+function showBooking() {
+  taxiRef.on('value', function (snapshot) {
+    snapshot.forEach(function (childSnapshot) {
+      var data = childSnapshot.val()
+
+      document.getElementById('booking-table').innerHTML += `
+        <tr>
+        <th scope="row">${data.bookingdate}</th>
+        <td>${data.name}</td>
+        <td>${data.phone}</td>
+        <td>${data.city}</td>
+        <td>${data.destination}</td>
+        <td>${data.tripdate}</td>
+        <td>${data.triptime}</td>
+        <td>${data.vehicle}</td>
+        <td>${data.person}</td>
+        </tr>`
+    })
   })
 }
