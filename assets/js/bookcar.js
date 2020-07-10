@@ -94,6 +94,7 @@ function carBooking(
   showBooking()
 }
 
+// Get Booking from Firebase
 function showBooking() {
   taxiRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {

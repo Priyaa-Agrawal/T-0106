@@ -64,6 +64,7 @@ function taxi(date, firstname, lastname, phone, email, vehicle) {
   })
 }
 
+// Get Taxi details from Firebase
 function showTaxi() {
   taxiRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {

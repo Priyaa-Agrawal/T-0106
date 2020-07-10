@@ -33,6 +33,7 @@ function showMessage() {
   })
 }
 
+// Get Booking from Firebase
 function showBooking() {
   bookingRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
@@ -54,6 +55,7 @@ function showBooking() {
   })
 }
 
+// Get Taxi details from Firebase
 function showTaxi() {
   taxiRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
