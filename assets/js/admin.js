@@ -17,10 +17,11 @@ var bookingRef = firebase.database().ref('carbooking')
 var taxiRef = firebase.database().ref('taxi')
 
 function showMessage() {
+  var sno = 0
   messagesRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var data = childSnapshot.val()
-
+      sno += 1
       document.getElementById('contact-table').innerHTML += `
         <tr>
         <th scope="row">${data.date}</th>
@@ -28,6 +29,7 @@ function showMessage() {
         <td>${data.phone}</td>
         <td>${data.email}</td>
         <td>${data.message}</td>
+        <td id="deletemessage"><button type="submit" class="btn btn-primary" onsubmit="deleteMessage(sno);">Delete</button></td>
         </tr>`
     })
   })
@@ -50,6 +52,7 @@ function showBooking() {
         <td>${data.triptime}</td>
         <td>${data.vehicle}</td>
         <td>${data.person}</td>
+        <td><button type="submit" class="btn btn-success">Delete</button></td>
         </tr>`
     })
   })
@@ -69,7 +72,34 @@ function showTaxi() {
           <td>${data.phone}</td>
           <td>${data.email}</td>
           <td>${data.vehicle}</td>
+          <td><button type="submit" class="btn btn-warning">Delete</button></td>
+          
           </tr>`
     })
   })
+}
+
+// document
+//   .getElementById('deletemessage')
+//   .addEventListener('submit', deleteMessage)
+
+function deleteMessage(id) {
+  // e.stopPropogation()
+  console.log(id)
+}
+// Login
+
+// Listen for form submit
+document.getElementById('login').addEventListener('submit', login)
+function login(e) {
+  e.preventDefault()
+  var username = document.getElementById('username').value
+  var password = document.getElementById('password').value
+  if (username == 'tripdoor' && password == 'tripdoor@20') {
+    showBooking()
+    showMessage()
+    showTaxi()
+    document.getElementById('data').style.display = 'block'
+    document.getElementById('login').style.display = 'none'
+  }
 }
