@@ -17,13 +17,9 @@ var bookingRef = firebase.database().ref('carbooking')
 var taxiRef = firebase.database().ref('taxi')
 
 function showMessage() {
-  var sno = 0
   messagesRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var data = childSnapshot.val()
-
-      console.log(childSnapshot.key)
-      // key = childSnapshot.key
       document.getElementById('contact-table').innerHTML += `
         <tr>
         <th scope="row">${data.date}</th>
@@ -31,7 +27,7 @@ function showMessage() {
         <td>${data.phone}</td>
         <td>${data.email}</td>
         <td>${data.message}</td>
-        <td id="deletemessage"><button type="submit" class="btn btn-primary" onclick="deleteMessage(childSnapshot.key);">Delete</button></td>
+        <td id="deletemessage"><button type="submit" class="btn btn-primary" onclick="deleteMessage('${childSnapshot.key}');">Delete</button></td>
         </tr>`
     })
   })
@@ -53,7 +49,7 @@ function showBooking() {
         <td>${data.triptime}</td>
         <td>${data.vehicle}</td>
         <td>${data.person}</td>
-        <td><button type="submit" class="btn btn-success">Delete</button></td>
+        <td id="deleteBooking"><button type="submit" class="btn btn-success" onclick="deleteBooking('${childSnapshot.key}');">Delete</button></td>
         </tr>`
     })
   })
@@ -73,31 +69,38 @@ function showTaxi() {
           <td>${data.phone}</td>
           <td>${data.email}</td>
           <td>${data.vehicle}</td>
-          <td><button type="submit" class="btn btn-warning">Delete</button></td>
+          <td id="deleteTaxi"><button type="submit" class="btn btn-warning"  onclick="deleteTaxi('${childSnapshot.key}');">Delete</button></td>
           
           </tr>`
     })
   })
 }
 
-// document
-//   .getElementById('deletemessage')
-//   .addEventListener('submit', deleteMessage)
-
+// Delete Message
+// document.getElementById('deleteMessage').addEventListener('click', deleteMessage)
 function deleteMessage(id) {
-  alert('hello')
-  // e.stopPropogation()
-  console.log(id)
+  messagesRef.child(id).remove()
 }
-// Login
 
+// Delete Booking
+function deleteBooking(id) {
+  bookingRef.child(id).remove()
+}
+
+// Delete Taxi
+function deleteTaxi(id) {
+  taxiRef.child(id).remove()
+}
+
+// Login
 // Listen for form submit
 document.getElementById('login').addEventListener('submit', login)
 function login(e) {
   e.preventDefault()
   var username = document.getElementById('username').value
   var password = document.getElementById('password').value
-  if (username == '1' && password == '1') {
+  if (username == 'tripdoor' && password == 'tripdoor@123') {
+    // window.location.href = '/adminlogin.html'
     showBooking()
     showMessage()
     showTaxi()

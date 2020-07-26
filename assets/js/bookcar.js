@@ -91,27 +91,27 @@ function carBooking(
     person: person,
     bookingdate: bookingdate.toDateString(),
   })
-  showBooking()
+  // showBooking()
 }
 
 // Get Booking from Firebase
-function showBooking() {
-  taxiRef.on('value', function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-      var data = childSnapshot.val()
+// function showBooking() {
+//   taxiRef.on('value', function (snapshot) {
+//     snapshot.forEach(function (childSnapshot) {
+//       var data = childSnapshot.val()
 
-      document.getElementById('booking-table').innerHTML += `
-        <tr>
-        <th scope="row">${data.bookingdate}</th>
-        <td>${data.name}</td>
-        <td>${data.phone}</td>
-        <td>${data.city}</td>
-        <td>${data.destination}</td>
-        <td>${data.tripdate}</td>
-        <td>${data.triptime}</td>
-        <td>${data.vehicle}</td>
-        <td>${data.person}</td>
-        </tr>`
-    })
-  })
-}
+//       document.getElementById('booking-table').innerHTML += `
+//         <tr>
+//         <th scope="row">${data.bookingdate}</th>
+//         <td>${data.name}</td>
+//         <td>${data.phone}</td>
+//         <td>${data.city}</td>
+//         <td>${data.destination}</td>
+//         <td>${data.tripdate}</td>
+//         <td>${data.triptime}</td>
+//         <td>${data.vehicle}</td>
+//         <td>${data.person}</td>
+//         </tr>`
+//     })
+//   })
+// }

@@ -28,12 +28,9 @@ function submitForm(e) {
   var email = getInputVal('email')
   var message = getInputVal('message')
   var date = new Date()
-  d = date.toString()
-  t = d.split('GMT+0530 (India Standard Time)')
-  // console.log(name, phone, email, message, t)
 
   //Save Message
-  saveMessage(t, name, phone, email, message)
+  saveMessage(date, name, phone, email, message)
 
   //Show alert
   document.querySelector('.sent-message').style.display = 'block'
@@ -56,29 +53,29 @@ function getInputVal(id) {
 function saveMessage(date, name, phone, email, message) {
   var newMessageRef = messagesRef.push()
   newMessageRef.set({
-    date: date.toString(),
+    date: date.toDateString(),
     name: name,
     phone: phone,
     email: email,
     message: message,
   })
-  showMessage()
+  // showMessage()
 }
 
 // Get message from Firebase
-function showMessage() {
-  messagesRef.on('value', function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-      var data = childSnapshot.val()
+// function showMessage() {
+//   messagesRef.on('value', function (snapshot) {
+//     snapshot.forEach(function (childSnapshot) {
+//       var data = childSnapshot.val()
 
-      document.getElementById('contact-table').innerHTML += `
-      <tr>
-      <th scope="row">${data.date.toDateString()}</th>
-      <td>${data.name}</td>
-      <td>${data.phone}</td>
-      <td>${data.email}</td>
-      <td>${data.message}</td>
-      </tr>`
-    })
-  })
-}
+//       document.getElementById('contact-table').innerHTML += `
+//       <tr>
+//       <th scope="row">${data.date}</th>
+//       <td>${data.name}</td>
+//       <td>${data.phone}</td>
+//       <td>${data.email}</td>
+//       <td>${data.message}</td>
+//       </tr>`
+//     })
+//   })
+// }

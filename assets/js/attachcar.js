@@ -29,7 +29,6 @@ function submitForm(e) {
   var email = getInputVal('email')
   var vehicle = getInputVal('vehicle')
   var date = new Date()
-  // console.log(name, phone, email, message, t)
 
   //Attach Taxi
   taxi(date, firstname, lastname, phone, email, vehicle)
@@ -65,20 +64,20 @@ function taxi(date, firstname, lastname, phone, email, vehicle) {
 }
 
 // Get Taxi details from Firebase
-function showTaxi() {
-  taxiRef.on('value', function (snapshot) {
-    snapshot.forEach(function (childSnapshot) {
-      var data = childSnapshot.val()
+// function showTaxi() {
+//   taxiRef.on('value', function (snapshot) {
+//     snapshot.forEach(function (childSnapshot) {
+//       var data = childSnapshot.val()
 
-      document.getElementById('taxi-table').innerHTML += `
-        <tr>
-        <th scope="row">${data.date}</th>
-        <td>${data.firstname}</td>
-        <td>${data.lastname}</td>
-        <td>${data.phone}</td>
-        <td>${data.email}</td>
-        <td>${data.vehicle}</td>
-        </tr>`
-    })
-  })
-}
+//       document.getElementById('taxi-table').innerHTML += `
+//         <tr>
+//         <th scope="row">${data.date}</th>
+//         <td>${data.firstname}</td>
+//         <td>${data.lastname}</td>
+//         <td>${data.phone}</td>
+//         <td>${data.email}</td>
+//         <td>${data.vehicle}</td>
+//         </tr>`
+//     })
+//   })
+// }
