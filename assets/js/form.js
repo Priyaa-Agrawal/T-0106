@@ -28,10 +28,12 @@ function submitForm(e) {
   var email = getInputVal('email')
   var message = getInputVal('message')
   var date = new Date()
+  d = date.toString()
+  t = d.split('GMT+0530 (India Standard Time)')
   // console.log(name, phone, email, message, t)
 
   //Save Message
-  saveMessage(date, name, phone, email, message)
+  saveMessage(t, name, phone, email, message)
 
   //Show alert
   document.querySelector('.sent-message').style.display = 'block'
@@ -54,7 +56,7 @@ function getInputVal(id) {
 function saveMessage(date, name, phone, email, message) {
   var newMessageRef = messagesRef.push()
   newMessageRef.set({
-    date: date.toDateString(),
+    date: date.toString(),
     name: name,
     phone: phone,
     email: email,
@@ -71,7 +73,7 @@ function showMessage() {
 
       document.getElementById('contact-table').innerHTML += `
       <tr>
-      <th scope="row">${data.date}</th>
+      <th scope="row">${data.date.toDateString()}</th>
       <td>${data.name}</td>
       <td>${data.phone}</td>
       <td>${data.email}</td>

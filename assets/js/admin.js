@@ -21,7 +21,9 @@ function showMessage() {
   messagesRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var data = childSnapshot.val()
-      sno += 1
+
+      console.log(childSnapshot.key)
+      // key = childSnapshot.key
       document.getElementById('contact-table').innerHTML += `
         <tr>
         <th scope="row">${data.date}</th>
@@ -29,7 +31,7 @@ function showMessage() {
         <td>${data.phone}</td>
         <td>${data.email}</td>
         <td>${data.message}</td>
-        <td id="deletemessage"><button type="submit" class="btn btn-primary" onsubmit="deleteMessage(sno);">Delete</button></td>
+        <td id="deletemessage"><button type="submit" class="btn btn-primary" onclick="deleteMessage(childSnapshot.key);">Delete</button></td>
         </tr>`
     })
   })
@@ -40,7 +42,6 @@ function showBooking() {
   bookingRef.on('value', function (snapshot) {
     snapshot.forEach(function (childSnapshot) {
       var data = childSnapshot.val()
-
       document.getElementById('booking-table').innerHTML += `
         <tr>
         <th scope="row">${data.bookingdate}</th>
@@ -84,6 +85,7 @@ function showTaxi() {
 //   .addEventListener('submit', deleteMessage)
 
 function deleteMessage(id) {
+  alert('hello')
   // e.stopPropogation()
   console.log(id)
 }
@@ -95,7 +97,7 @@ function login(e) {
   e.preventDefault()
   var username = document.getElementById('username').value
   var password = document.getElementById('password').value
-  if (username == 'tripdoor' && password == 'tripdoor@20') {
+  if (username == '1' && password == '1') {
     showBooking()
     showMessage()
     showTaxi()
