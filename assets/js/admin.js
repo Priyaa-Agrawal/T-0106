@@ -80,31 +80,34 @@ function showTaxi() {
 // document.getElementById('deleteMessage').addEventListener('click', deleteMessage)
 function deleteMessage(id) {
   messagesRef.child(id).remove()
+  location.reload()
 }
 
 // Delete Booking
 function deleteBooking(id) {
   bookingRef.child(id).remove()
+  location.reload()
 }
 
 // Delete Taxi
 function deleteTaxi(id) {
   taxiRef.child(id).remove()
+  location.reload()
 }
 
 // Login
 // Listen for form submit
-document.getElementById('login').addEventListener('submit', login)
-function login(e) {
-  e.preventDefault()
-  var username = document.getElementById('username').value
-  var password = document.getElementById('password').value
-  if (username == 'tripdoor' && password == 'tripdoor@123') {
-    // window.location.href = '/adminlogin.html'
-    showBooking()
-    showMessage()
-    showTaxi()
-    document.getElementById('data').style.display = 'block'
-    document.getElementById('login').style.display = 'none'
-  }
-}
+// document.getElementById('login').addEventListener('submit', login)
+// function login(e) {
+//   e.preventDefault()
+//   var username = document.getElementById('username').value
+//   var password = document.getElementById('password').value
+//   if (username == 'tripdoor' && password == 'tripdoor@123') {
+//     // window.location.href = '/adminlogin.html'
+//     showBooking()
+//     showMessage()
+//     showTaxi()
+//     document.getElementById('data').style.display = 'block'
+//     document.getElementById('login').style.display = 'none'
+//   }
+// }
